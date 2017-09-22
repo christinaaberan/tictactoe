@@ -1,91 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tic Tac Toe</title>
-    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
-    <style>
-           body{
-               background-image:url('images/hypnotize.png');
-               overflow:hidden;
-               font-family: 'Patrick Hand', cursive;
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe</title>
+  <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+  <script src="https://use.fontawesome.com/f3f668772b.js">
+  </script>
+  <style>
+            body{
+                background-image:url('images/hypnotize.png');
+                overflow:hidden;
+                font-family: 'Patrick Hand', cursive;
+
+            }
+            .container{
+                display:inline-block;
+                width:100%;
+                position:absolute;
+                margin-top:-2%;
+                top:50%;
+                transform:translateY(-50%);
+                -webkit-transform:translateY(-50%);
+                -moz-transform:translateY(-50%);
+            }
+          h1{
+            text-align:center;
+            font-size:3em;
+            text-transform:uppercase;
+            letter-spacing:2px;
+          }
+           #board{
+            width:100%;
+            max-width:900px;
+            margin:auto;
+            display:flex;
+            display:-webkit-flex;
+            justify-content:space-around;
+            -webkit-justify-content:space-around;
+            flex-wrap: wrap;
+
 
            }
-           .container{
-               display:inline-block;
-               width:100%;
-               position:absolute;
-               margin-top:-5%;
-               top:50%;
-               transform:translateY(-50%);
-               -webkit-transform:translateY(-50%);
-               -moz-transform:translateY(-50%);
+           .boardspace{
+            width:30%;
+            height:20vh;
+            max-height:200px;
+            position:relative;
+            text-align:center;
+             margin-bottom:3%;
+            box-sizing:border-box;
+            border-radius:5px;
+            background-image:linear-gradient(74deg, rgba(79, 136, 208, 0.73) 0%, #94afb9 100%);
+            background-image:-webkit-linear-gradient(74deg, rgba(79, 136, 208, 0.73) 0%, #94afb9 100%);
+            background-image:-moz-linear-gradient(74deg, rgba(79, 136, 208, 0.73) 0%, #94afb9 100%);
+             
+     color:white;
+     font-size:1.5em;
            }
-         h1{
-           text-align:center;
-           font-size:3em;
-           text-transform:uppercase;
-           letter-spacing:2px;
-         }
-          #board{
-           width:100%;
-           max-width:900px;
-           margin:auto;
-           display:flex;
-           display:-webkit-flex;
-           justify-content:space-around;
-           -webkit-justify-content:space-around;
-           flex-wrap: wrap;
+           .boardspace:not(.touched):hover{
+             transform: scale(1.1);
+            cursor:pointer;
+            background-image: linear-gradient(74deg, rgba(79, 136, 208, 0.73) 0%, #ddf6ff 100%);
+             background-image: -webkit-linear-gradient(74deg, rgba(79, 136, 208, 0.73) 0%, #ddf6ff 100%);
+             background-image: -moz-linear-gradient(74deg, rgba(79, 136, 208, 0.73) 0%, #ddf6ff 100%);
+           }
+           .boardspace:focus{
+             background:red;
+           }
+           .boardspace:active{
 
+           }
+           .fa{
+             font-size:1.75em;
+           }
+           .x{
+                 background-image: -webkit-radial-gradient(center, ellipse cover, rgba(255, 104, 146, 0.57) 0%, rgba(255, 103, 148, 0.79) 50%, rgba(228, 96, 103, 0.85) 100%);
+                 background-image: -moz-radial-gradient(center, ellipse cover, rgba(255, 104, 146, 0.57) 0%, rgba(255, 103, 148, 0.79) 50%, rgba(228, 96, 103, 0.85) 100%);
+                 background-image: -o-radial-gradient(center, ellipse cover, rgba(255, 104, 146, 0.57) 0%, rgba(255, 103, 148, 0.79) 50%, rgba(228, 96, 103, 0.85) 100%);
+           }
+           .o{
+             background-image: -webkit-radial-gradient(center, ellipse cover, #3dd2ea 0%, #82ccfb 100%);
+             background-image: -moz-radial-gradient(center, ellipse cover, #3dd2ea 0%, #82ccfb 100%);
+             background-image: radial-gradient(center, ellipse cover, #3dd2ea 0%, #82ccfb 100%);
+           }
+           .boardspace h2,.boardspace span{
+            display:inline-block;
+            position:absolute;
+            margin:auto;
+            top:50%;
+            left:0;
+            right:0;
+            transform:translateY(-50%);
+            -webkit-transform:translateY(-50%);
+            -moz-transform:translateY(-50%);     
 
-          }
-          .boardspace{
-           width:30%;
-           height:200px;
-           position:relative;
-           text-align:center;
-            margin-bottom:3%;
-           box-sizing:border-box;
-           border-radius:5px;
-            background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
-            background-image: -webkit-linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
-            background-image: -moz-linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
-
-    color:white;
-    font-size:1.5em;
-          }
-          .boardspace:hover{
-           cursor:pointer;
-          }
-          .boardspace h2,.boardspace span{
-           display:inline-block;
-           position:absolute;
-           margin:auto;
-           top:50%;
-           left:0;
-           right:0;
-           transform:translateY(-50%);
-           -webkit-transform:translateY(-50%);
-           -moz-transform:translateY(-50%);     
-
-          }
-          .winner{
-           position:absolute;
-           left:0;
-           right:0;
-           text-align:center;
-           font-size:2em;
-          }
-       
-    </style>
+           }
+           .winner{
+            position:absolute;
+            left:0;
+            right:0;
+            text-align:center;
+            font-size:2em;
+           }
+        
+  </style>
 </head>
 <body>
-    <section class="container">
-        <h1>Tic Tac Toe</h1>
-        <div id="board"></div>
-        <div class="winner"></div>
-    </section>
-    <script src="script.js">
-    </script>
+  <section class="container">
+    <h1>Tic Tac Toe</h1>
+    <div id="board"></div>
+    <div class="winner"></div>
+  </section>
+  <script src="script.js">
+  </script>
 </body>
 </html>
