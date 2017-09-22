@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <style>
+           body{
+               background-image:url('images/hypnotize.png');
+               overflow:hidden;
+               font-family: 'Patrick Hand', cursive;
+
+           }
+           .container{
+               display:inline-block;
+               width:100%;
+               position:absolute;
+               margin-top:-5%;
+               top:50%;
+               transform:translateY(-50%);
+               -webkit-transform:translateY(-50%);
+               -moz-transform:translateY(-50%);
+           }
+         h1{
+           text-align:center;
+           font-size:3em;
+           text-transform:uppercase;
+           letter-spacing:2px;
+         }
+          #board{
+           width:100%;
+           max-width:900px;
+           margin:auto;
+           display:flex;
+           display:-webkit-flex;
+           justify-content:space-around;
+           -webkit-justify-content:space-around;
+           flex-wrap: wrap;
+
+
+          }
+          .boardspace{
+           width:30%;
+           height:200px;
+           position:relative;
+           text-align:center;
+            margin-bottom:3%;
+           box-sizing:border-box;
+           border-radius:5px;
+            background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+            background-image: -webkit-linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+            background-image: -moz-linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+
+    color:white;
+    font-size:1.5em;
+          }
+          .boardspace:hover{
+           cursor:pointer;
+          }
+          .boardspace h2,.boardspace span{
+           display:inline-block;
+           position:absolute;
+           margin:auto;
+           top:50%;
+           left:0;
+           right:0;
+           transform:translateY(-50%);
+           -webkit-transform:translateY(-50%);
+           -moz-transform:translateY(-50%);     
+
+          }
+          .winner{
+           position:absolute;
+           left:0;
+           right:0;
+           text-align:center;
+           font-size:2em;
+          }
+       
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h1>Tic Tac Toe</h1>
+        <div id="board"></div>
+        <div class="winner"></div>
+    </section>
+    <script src="script.js">
+    </script>
+</body>
+</html>
