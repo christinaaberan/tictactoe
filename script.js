@@ -1,6 +1,9 @@
 window.onload = function() {
 	var boardSize = 9;
+	var whoseTurn = document.querySelector(".whose-turn");
 	var whoWon = document.querySelector(".winner");
+	var counter = 0;
+
 	
 	for (var i=0; i<boardSize; i++){
 		var newSpace = document.createElement("div");
@@ -13,7 +16,7 @@ window.onload = function() {
 	for (var e=0; e<space.length; e++){
 		space[e].addEventListener("click", doTurn);
 	}
-	var counter = 0;
+	
 	function doTurn(){
 		if(whoWon.innerHTML != ""){
 			return;
@@ -21,21 +24,25 @@ window.onload = function() {
 		else{
 			if( counter % 2 === 0){
 				this.innerHTML = "<h2>X</h2>";
-				this.classList.add("touched");
 				this.classList.add("x");
-				checkItOut();
 				
 			}
 			else{
 				this.innerHTML = "<h2>O</h2>";
-				this.classList.add("touched");
 				this.classList.add("o");
-				checkItOut();
-			
 			}
+			this.classList.add("touched");
+			this.removeEventListener("click", doTurn);
+			checkItOut();
 		}
 
 		counter++;
+		if(counter % 2 ===0 ){
+			whoseTurn.innerHTML = "X's turn!";		
+		}
+		else{
+			whoseTurn.innerHTML = "O's turn!";
+		} 
 	}
 
 	function replaceTxt(){
@@ -58,6 +65,7 @@ window.onload = function() {
 			(space[1].classList.contains("x"))&&(space[4].classList.contains("x"))&&(space[7].classList.contains("x"))||
 			(space[2].classList.contains("x"))&&(space[5].classList.contains("x"))&&(space[8].classList.contains("x"))||
 			(space[2].classList.contains("x"))&&(space[4].classList.contains("x"))&&(space[6].classList.contains("x"))){
+			whoseTurn.remove();
 			whoWon.innerHTML = "X Wins!!";
 			event.preventDefault();
 			replaceTxt();
@@ -70,6 +78,7 @@ window.onload = function() {
 			(space[1].classList.contains("o"))&&(space[4].classList.contains("o"))&&(space[7].classList.contains("o"))||
 			(space[2].classList.contains("o"))&&(space[5].classList.contains("o"))&&(space[8].classList.contains("o"))||
 			(space[2].classList.contains("o"))&&(space[4].classList.contains("o"))&&(space[6].classList.contains("o"))){
+			whoseTurn.remove();
 			whoWon.innerHTML = "O Wins!!";
 			event.preventDefault();
 			replaceTxt();
