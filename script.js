@@ -74,6 +74,10 @@ window.onload = function() {
 			event.preventDefault();
 			replaceTxt();
 		}
+		else if (document.querySelectorAll('.touched').length == space.length){
+			whoWon.innerHTML = "nobody won...";
+		}
+
 	}
 
 
